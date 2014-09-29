@@ -1,0 +1,703 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Advanced CSS Techniques Workshop &hearts; Girl Develop It Boulder</title>
+<meta name="description" content="">
+<meta name="author" content="Cara Jo Miller &amp; Caitlin McKenna">
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<link rel="stylesheet" href="reveal/css/reveal.css">
+<link rel="stylesheet" href="reveal/css/theme/simple.css" id="theme">
+<link rel="stylesheet" href="css/font-awesome.css">
+
+<!-- For syntax highlighting -->
+<!-- light editor-->
+<link rel="stylesheet" href="reveal/lib/css/light.css">
+<!-- dark editor<link rel="stylesheet" href="reveal/lib/css/dark.css">-->
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+            if( window.location.search.match( /print-pdf/gi ) ) {
+                var link = document.createElement( 'link' );
+                link.rel = 'stylesheet';
+                link.type = 'text/css';
+                link.href = 'reveal/css/print/pdf.css';
+                document.getElementsByTagName( 'head' )[0].appendChild( link );
+            }
+        </script>
+<link rel="icon" type="image/x-icon" href="reveal/favicon.ico"/>
+<!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="reveal">
+	<!-- Any section element inside of this container is displayed as a slide -->
+	<div class="slides">
+            <!-- Opening -->
+            <section>
+                <img src="images/gdi_logo_badge.png" style="padding: 10px;"/>
+                <h2>Advanced<br>CSS Techniques</h2>
+            </section>
+            <!-- Sample Slide -->
+            <!-- Sample Slide -->
+            <section>
+              <h2>Welcome!</h2>
+              <h4 class="blue">Wifi Info</h4>
+              <p><strong>Network:</strong> SGGuest</p>
+              <p><strong>Password:</strong> GridSend0909 </p><br/>
+              <h3>Download workshop files</h3>
+              <p>If you have not already downloaded the files for this workshop - please download them at <a href="http://gdiboulder.com/bootstrap" target="blank">gdiboulder.com/bootstrap</a></p>
+            </section>
+            <section>
+                <h2>Thanks to our sponsor:</h2>
+                <img src="images/sponsors/sendgrid.jpg" style="border:none; width: 400px;"/>
+            </section>
+            <section>
+                <h2>Meet your instructor: Cara Jo Miller</h2>
+                <ul>
+                    <li><strong>Co-founder:</strong> Girl Develop It Boulder</li>
+                    <li><strong>Lead Designer:</strong>  Simple Energy</li>
+                    <li><strong>E-mail:</strong>  carajo@girldevelopit.com</li>
+                    <li><strong>Twitter:</strong>  @corrinajo</li>
+                    <li>Lover of all things glitter</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Meet your instructor: Caitlin McKenna</h2>
+                <ul>
+                    <li><strong>Web Developer:</strong> Insight Designs</li>
+                    <li><strong>Twitter:</strong> @caitlinemckenna</li>
+                    <li>Spotify Playlist Curator</li>
+                </ul>
+            </section>
+            <section data-background="#f05b62">
+                <h2 style="color: #fafafa;">Cross-Device CSS</h2>
+            </section>
+            <section>
+			<h2>What's the point of a CSS media query?</h2>
+			<p>
+				Media queries are designed to make your life easier by allowing you to control how your elements look on different devices.
+			</p>
+			<br>
+			<p>
+				Essentially, they are conditional statements that will apply certain style rules to your elements, depending on the device your site is being viewed on.
+			</p>
+			</section>
+			<section>
+			<p>
+				Using media queries, this desktop design:
+			</p>
+			<img src="images/desktop.png">
+			</section>
+			<section>
+			<p>
+				Also looks great on a tablet:
+			</p>
+			<img src="images/iPad.png">
+			</section>
+			<section>
+			<p>
+				And rad on a smartphone!
+			</p>
+			<img src="images/iPhone.png">
+			</section>
+			<section>
+			<p>
+				You can also use media queries to make sure your content looks great when it's printed out!
+			</p>
+			</section>
+            <section>
+                <h2>CSS Media Queries</h2>
+                <p>A media query consists of a media type and an optional combination of media features. CSS rules inside the query will be applied
+only if the query is true.</p>
+<pre><code class="css">
+@media [media types] and [media features] {
+  /* media-specific rules */
+}
+</code></pre>
+            </section>
+            <section>
+                <h2>CSS Media Queries</h2>
+                <p>They can also be specified for a linked stylesheet:</p>
+<pre><code class="xml">
+&lt;link rel="stylesheet" media="&lt;media types&gt;
+   and &lt;media features&gt;" href="alternative.css" /&gt;
+</code></pre>
+
+            </section>
+            <section>
+                <h2>Print Styles</h2>
+                <p>All modern browsers support the "print" media type for specifying print styles.</p>
+<pre><code class="css">
+@media print {
+  body {
+    background: white;
+  }
+  #header, #footer {
+    display: none;
+  }
+  .section {
+    page-break-inside: avoid;
+    page-break-after: always;
+  }
+}
+</code></pre>
+            </section>
+            <section>
+                <h2>Resolution Queries</h2>
+                <p>Modern mobile browsers support media queries which depend on the <code>device-width</code> and/or <code>orientation</code>.</p>
+<h4>Targeting iPads:</h3>
+<pre><code class="css">
+@media only screen
+  and (min-device-width : 768px)
+  and (max-device-width : 1024px) {
+    img {
+      width: 100%;
+    }
+}
+</code></pre>
+            </section>
+                
+            <section>
+                <h2>Resolution Queries</h2>
+                <p>A more general approach is just to query on <code>min-width</code> and <code>max-width</code>, which are calculated based on window size, not device size.</p>
+<pre><code class="css">
+@media screen and (max-width: 640px) {
+  #sidebar {
+    display: none;
+  }
+}
+</code></pre>
+<pre><code class="css">
+@media (min-width: 768px) and (max-width: 979px) {
+  #sidebar {
+    width: 200px;
+  }
+}
+</code></pre>
+            </section>
+            <section>
+                <h2>Pixel Density Queries</h2>
+                <p>The experimental <code>device-pixel-ratio</code> feature can be used to detect pixel density:</p>
+<pre><code class="css">
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+    only screen and (-o-min-device-pixel-ratio: 3/2),
+    only screen and (min--moz-device-pixel-ratio: 1.5),
+    only screen and (min-device-pixel-ratio: 1.5) {
+        #logo {
+            background-image:url(images/icon@2x.png);
+        }
+}
+</code></pre>
+            </section>
+            <section>
+                <h2>Testing Resolution Targeting</h2>
+                <p>Instead of testing on the actual devices or resizing the browser, you can use these tools:</p>
+                <ul>
+                 <li><a href="http://pamelafox.github.com/resolutionizer/" target="blank">Resolutionizer</a>
+                 <li><a href="http://screenqueri.es/" target="blank">ScreenQueries</a>
+                 <li><a href="http://labs.adobe.com/technologies/shadow/" target="blank">Adobe Shadow</a>
+                 <li><a href="https://developer.mozilla.org/en-US/docs/Tools/Responsive_Design_View" target="blank">Firefox Responsive Design View</a>
+                </ul>
+            </section>
+            <section data-background="#f05b62">
+                <h2 style="color: #fafafa;">Let's Develop It! </h2>
+            </section>
+            <section>
+                <h2>Media Queries Exercise</h2>
+                <ol>
+                    <li>Download the workshop files if you haven't already.</li>
+                    <li>Open up Exercise 1 (Media Queries).</li>
+                </ol>
+            </section>
+            <section>
+                <h3>Resize webpage for smaller screens</h3>
+                <ol>
+                    <li>Hide the sidebar</li>
+                    <li>Remove padding on the <code>body</code></li>
+                    <li>Images should not exceed the width of the screen</li>
+                    <li>Navigation items should be on their own line (not floating)</li>
+                    <li>The header should be fixed so that it stays at the top when scrolling.</li>
+                </ol>
+
+                <h3 style="margin-top: 20px;">Bonus: Make Print Styles</h3>
+                <ol>   
+                    <li>Hide the header and navigation when printed.</li>
+                    <li>Make the sidebar display under the main content.</li>
+                </ol>
+            </section>
+
+            <section>
+                <h2>Media Query Resources</h2>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Media_queries" target="bank">Mozilla Developer Network Media Queries</a></li>
+                    <li><a href="http://css-tricks.com/snippets/css/media-queries-for-standard-devices/" target="blank">Media Queries for Standard Devices</a></li>
+                    <li><a href="http://css-tricks.com/css-media-queries/" target="blank">CSS Media Queries & Using Available Space</a></li>
+                </ul>
+            </section>
+            <section data-background="#f05b62">
+                <h2 style="color: #fafafa;">Cross-Browser CSS</h2>
+            </section>
+            <section>
+                <h2>Browser Compatibility</h2>
+                <p>Older browsers do not know about newer CSS selectors/properties.</p>
+                <p><strong>Use these sites to check compatibility:</strong></p>
+                 <ul>
+                  <li><a href="http://caniuse.com/" target="blank">caniuse.com</a>
+                  <li><a href="http://www.quirksmode.org/css/contents.html" target="blank">Quirks Mode: CSS Compatibility</a>
+                  <li><a href="http://www.standardista.com/css3/css3-selector-browser-support/" target="blank">CSS3 Selector support</a>
+                  <li><a href="http://html5please.com/" target="blank">html5please.com</a>
+                </ul>
+            </section>
+            <section>
+                <h2>CSS Fallbacks</h2>
+                <p>When the CSS parser doesn't understand a property or value, it ignores it. For fallback, specify older syntaxes first.</p>
+            </section>
+            <section>
+            <h2>CSS Fallbacks</h2>
+<p><strong>RGBA &amp; older browsers:</strong></p>
+<pre><code class="css">
+body {
+  background:url(cyan_transparent_50.png);
+  background:rgba(0,255,255,.5);
+}
+</code></pre>
+<p><strong>CSS Gradients &amp; older browsers:</strong></p>
+<pre><code class="css">
+button.glossy {
+   background: #ccc url(gloss.png) 50% 50% repeat-x;
+   background: #ccc -webkit-gradient(linear, left top, left bottom,
+         from(rgba(255,255,255, .4)), to(rgba(0,0,0, .1)));
+}
+</code></pre>
+
+<p><strong>Opacity &amp; older browsers:</strong></p>
+<pre><code class="css">
+.transparent {
+  -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  filter: alpha(opacity=50);    
+  opacity: .5;          
+}
+</code></pre>
+            </section>
+            <section>
+                <h2>Conditional CSS</h2>
+                <p>In case you do need to specify CSS just for a particular browsers, there are a few ways.</p>
+                <p>In IE, you can use conditional comments to specify IE stylesheets:</p>
+            </section>
+
+            <section>
+                <h2>Conditional CSS</h2>
+<pre><code class="xml">
+&lt;!--[if IE7]&gt;&lt;link rel="stylesheet" type="text/css" media="screen" href="css/ie7.css" /&gt;&lt;![endif]--&gt;
+</code></pre>
+<p>Or to conditionally add classes:</p>
+<pre><code class="xml">
+&lt;!--[if IE7]&gt; &lt;html class="ie7"&gt; &lt;![endif]--&gt;
+</code></pre>
+     </section>
+     <section>
+    <h2>Browser Bugs</h2>
+    <p>Not all browsers render CSS the same, with the most number of issues in IE. The best defense is to be aware and to test.</p>
+    <ul>
+  <li><a href="http://coding.smashingmagazine.com/2010/06/07/the-principles-of-cross-browser-css-coding/" target="blank">The Principles of Cross-Browser CSS Coding</a>
+  <li><a href="http://www.tutorialfeed.org/2010/01/10-common-css-browser-compatibility.html" target="blank">10 Common CSS Browser Compatibility Issues</a>
+  <li><a href="http://archive.webstandards.org/css/winie/" target="blank">IE's Top 10 CSS Problems</a>
+</ul>
+</section>
+<section>
+    <h2>Browser Testing</h2>
+    <p>Since not all browsers work on all operating systems (IE on Mac), you may need help from these tools for cross-browser testing:</p>
+    <ul>
+  <li><a href="http://www.modern.ie/en-us/virtualization-tools" target="blank">Modern.ie</a> Microsoft's free access to testing tools
+  <li><a href="http://www.saucelabs.com" target="blank">SauceLabs</a>: Cloud-based automated and manual testing
+  <li><a href="http://www.browserstack.com/" target="blank">BrowserStack</a>: Lets you debug in virtual browsers.
+  <li><a href="http://browsershots.org/" target="blank">BrowserShots</a>: Takes screenshots of your sites in different browsers.
+  <li><a href="https://browserling.com/" target="blank">BrowserLing</a>: Ditto.
+  <li><a href="http://multipleies.en.softonic.com/" target="blank">MultipleIEs</a>: Makes it possible to test in multiple IE versions on one computer.
+  <li><a href="http://www.my-debugbar.com/wiki/IETester/HomePage" target="blank">IETester</a>: Ditto.
+</ul>
+</section>
+            <section>
+                <h2>Cross-browser CSS Resources</h2>
+                <ul>
+                	<li><a href="http://css-tricks.com/rgba-browser-support/" target="_blank">RGBa Browser Support</a></li>
+					<li><a href="http://css-tricks.com/quickie-css3-tricks-with-fallbacks/" target="_blank">Quickie CSS3 Tricks with Fallbacks</a></li>
+					<li><a href="http://www.xanthir.com/blog/b4JF0" target="_blank">How CSS Handles Errors</a></li>
+					<li><a href="http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/" target="_blank">Conditional Stylesheets vs CSS Hacks? Answer: Neither!</a></li>
+					<li><a href="http://paulirish.com/2009/browser-specific-css-hacks/">CSS hacks with JavaScript</a></li>
+
+                </ul>
+                </section>
+<section data-background="#f05b62">
+                <h2 style="color: #fafafa;">Good Defaults For<br> Being Awesome</h2>
+            </section>
+            <section>
+                <h2>CSS Resets</h2>
+                <p>CSS reset stylesheets are used to normalize the default CSS across browsers.</p>
+                <p><a href="http://meyerweb.com/eric/tools/css/reset/" target="_blank">Reset.css</a> removes every default style.</p>
+<p><a href="http://necolas.github.com/normalize.css/" target="_blank">Normalize.css</a> normalizes the default styles across browsers 
+(and is the preferred approach).
+</p>
+            </section>
+            <section>
+                <h2>CSS Grids</h2>
+                <p>A grids system lets you layout pages according to fractions of a grid (usually 12, 16, or 24 columns).</p>
+                <p>Using <a href="http://yuilibrary.com/yui/docs/cssgrids/" target="blank">YUI CSS Grids</a>:</p>
+<pre><code class="xml">
+    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;http://yui.yahooapis.com/3.5.1/build/cssgrids/grids-min.css&quot;&gt;
+    &lt;div class=&quot;yui3-g&quot;&gt;
+        &lt;div class=&quot;yui3-u-5-24&quot;&gt;
+
+        &lt;/div&gt;
+        &lt;div class=&quot;yui3-u-19-24&quot;&gt;
+
+        &lt;/div&gt;
+   &lt;/div&gt;
+</code></pre>
+            </section>
+            <section>
+                <h2>CSS Frameworks</h2>
+                <p>Usually include a reset, a grids system, styles for typography and forms. Some include support for mobile/print.</p>
+<p>With <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>:</p>
+<pre><code class="xml">
+&lt;link href=&quot;http://twitter.github.com/bootstrap/assets/css/bootstrap.css&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;div class=&quot;container&quot;&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-md-4 col-xs-6&quot;&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col-md-8&quot;&gt;
+      &lt;div class=&quot;alert&quot;&gt;Hello!&lt;/div&gt;
+     &lt;/div&gt;
+  &lt;/div&gt;  
+&lt;/div&gt;
+</code></pre>                
+            </section>
+            <section data-background="#f05b62">
+                <h2 style="color: #fafafa;">Let's Develop It! </h2>
+            </section>
+            <section>
+                <h2>Bootstrap Exercise</h2>
+                <p>In your <strong>exercises/bootstrap</strong> folder, open up index.html in the browser and in your text editor.</p>
+                <ul>
+                    <li>Use Bootstrap's grid classes to make a basic two column layout with the sidebar and the content areas.<br>
+                    <strong>Hint: Use <code>.container, .row, and .col-md-*</code> classes.</strong></li>
+                    <li>Put the images with their headline &amp; paragraphs into columns to make a 3-column layout.</li>
+                    <li>Apply the class <code>.img-responsive</code> to the images to shrink them based on column width.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Popular Frameworks</h2>
+                <ul>
+                    <li><a href="http://getbootstrap.com" target="_blank">Bootstrap</a></li>
+                    <li><a href="http://foundation.zurb.com/" target="_blank">ZURB Foundation</a></li>
+                    <li><a href="http://purecss.io" target="_blank">Pure CSS</a></li>
+                    <li><a href="http://topcoat.io" target="_blank">Topcoat</a></li>
+                </ul>
+            </section>
+            <section data-background="#f05b62">
+                <h2 style="color: #fafafa;">CSS Performance</h2>
+            </section>
+            <section>
+                <h2>CSS Performance</h2>
+                <p>There are various ways that webpage performance can suffer because of CSS:</p>
+                <ul>
+                  <li>The CSS selectors are slow.
+                  <li>The CSS file itself is large.
+                  <li>The CSS loads lots of images.
+                </ul>
+                <p>Luckily, there are ways to avoid these issues...</p>
+            </section>
+            <section>
+                <h2>Slow Selectors</h2>
+                <p>Selector types, from fastest to slowest:</p>
+                <ul>
+                    <li>ID Rules (<code>#header</code>)
+                    <li>Class Rules (<code>.avatar</code>)
+                    <li>Tag Rules (<code>img</code>)
+                    <li>Universal Rules (<code>*, [type="checkbox"]</code>)
+                </ul>
+                <p>CSS engines evaluate selectors from right to left.
+				<pre><code class="css">
+/* CSS engine starts evaluating with h3 */
+#footer h3 {}
+/* CSS engine starts evaluating with a */
+ul li a {}
+				</code></pre>
+            </section>
+            <section>
+	            <p>You can <a href="https://developer.mozilla.org/en/Writing_Efficient_CSS" target="_blank">read more on the Mozilla Developer Network</a> or
+	use a tool like <a href="http://csslint.net/" target="_blank">CSSLint</a> to warn you of inefficient selectors.
+				</p>
+            </section>
+            <section>
+            	Some more resources for writing efficient CSS
+				<ul>
+					<li><a href="http://csswizardry.com/2011/09/writing-efficient-css-selectors/" target="_blank<">Writing efficient CSS selectors</a></li>
+					<li><a href="http://www.stevesouders.com/blog/2009/06/18/simplifying-css-selectors/" target="_blank">Simplifying CSS Selectors</a></li>
+					<li><a href="http://css-tricks.com/efficiently-rendering-css/" target="_blank">Efficiently Rendering CSS</a></li>
+					<li><a href="https://developers.google.com/speed/docs/best-practices/rendering#UseEfficientCSSSelectors" target="_blank">Google's PageSpeed Insights about CSS Selectors</a></li>
+					<li><a href="https://developer.mozilla.org/en/Writing_Efficient_CSS" target="_blank">Mozilla Developer Network: Writing efficient CSS</a></li>
+				</ul>
+            </section>
+            <section>
+				<h2>Big Files</h2>
+				<p>CSS compression tools reduce the size of CSS files by:
+					<ul>
+					  <li>Stripping whitespace, comments, and unneeded semi-colons.
+					  <li>Shortening number and color values
+					</ul>
+				</p>
+				<p>For example, this:</p>
+				<pre><code class="css">
+.sidebar {  /* color it grey, no border */
+    border-color: rgb(123, 123, 123);
+    border-width: 0px;
+}
+				</code></pre>
+				<p>becomes:</p>
+				<pre><code class="css">
+.sidebar{border-color:#7b7b7b;border-width:0}
+				</code></pre>
+            </section>
+            <section>
+            	<p>Some CSS Compression Tools:</p>
+            	<ul>
+            		<li><a href="http://csscompressor.com/">CSS Compressor</a></li>
+					<li><a href="http://www.minifycss.com/css-compressor/">CSS Compressor & Minifier</a></li>
+					<li><a href="http://cssminifier.com/">CSS Minifier</a></li>
+            	</ul>
+            </section>
+            <section>
+            	<h2>Lots of Images: Spriting</h2>
+            	<p>When a pages uses many <code>img</code> tags or <code>background-url</code> properties,
+it slows down load time. For smaller images, CSS spriting can help.</p>
+            </section>
+            <section>
+				<p>Spriting uses one image file with an unlimited number of images in it. To load a certain image, you request a coordinate within the image file.</p>
+				<p><strong>This is an example of CSS without sprites:</strong></p>
+				<pre><code class="css">
+#nav li a.item1 {background-image:url('../img/image1.gif')}
+#nav li a:hover.item1 {background-image:url('../img/image1_over.gif')}
+				</code></pre>
+				<p><strong>This is an example of the same CSS using sprites:</strong></p>
+				<pre><code class="css">
+#nav li a {background-image:url('../img/image_nav.gif')}
+#nav li a.item1 {background-position:0px 0px}
+#nav li a:hover.item1 {background-position:0px -72px}
+				</code></pre>
+            </section>
+            <section>
+            	<h2>Resources on Sprites</h2>
+            	<ul>
+            		<li><a href="http://www.w3schools.com/css/css_image_sprites.asp" target="_blank">w3 Schools Sprites Overview</a></li>
+            		<li><a href="http://css-tricks.com/css-sprites/" target="_blank">CSS Sprites</a></li>
+            	</ul>
+            </section>
+            <section>
+            	<h2>Lots of Images: Data URIs</h2>
+            	<p>Instead of linking to an external image, data URIs allow you to embed the image directly into the document.</p>
+            	<p>In CSS, it looks like this:</p>
+            	<pre>
+            	<code class="css">
+li { 
+  background: 
+    url(data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7)
+    no-repeat
+    left center;
+  padding: 5px 0 5px 25px;
+}            	
+            	</code>
+            	</pre>
+            </section>
+            <section>
+            	<h2>Data URI Generators:</h2>
+            	<ul>
+            		<li><a href="http://dopiaza.org/tools/datauri/index.php" target="_blank">Dopiaza.org Data: URI Generator</a></li>
+					<li><a href="http://duri.me/" target="_blank">duri.me Data URI Generator</a></li>
+            </section>
+            <section>
+            	<h2>Lots of Images: Icon Fonts</h2>
+				<p>An icon font is a font with icons instead of characters. You can make your own with <a href="https://icomoon.io/" target="_blank">icomoon</a> or <a href="http://fontcustom.com/" target="_blank">Font Custom</a> or use the popular <a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank">FontAwesome</a>.</p>
+				With an icon font, you include classes to add certain icons to your page.
+				<pre>
+				<code class="xml">
+<h4>
+	Happy Birthday! <i class="fa fa-birthday-cake"></i>
+</h4>
+				</code>
+				</pre>
+				<h4>
+	Happy Birthday! <i class="fa fa-birthday-cake"></i>
+</h4>
+            </section>
+			<section data-background="#f05b62">
+                <h2 style="color: #fafafa;">Productivity</h2>
+            </section>
+            <section>
+            	<h2>CSS Pre-processors</h2>
+            	<p>A pre-processor lets you write in a special, more efficient language and then compiles into organized CSS.</p>
+				<p>Common features:</p>
+			      <ul>
+			        <li>variables</li>
+			        <li>nesting</li>
+			        <li>mix-ins</li>
+			        <li>inheritance</li>
+			        <li>color functions</li>
+			        <li>vendor prefixes</li>
+			      </ul>
+            </section>
+			<section>
+				<h2>Most Common CSS Pre-Processors: Sass</h2>
+				<p><a href="http://sass-lang.com/" target="_blank">Sass</a> stands for "Syntactically Awesome Style Sheets." It runs on Ruby, so it's processed server-side.</p>
+				<pre>
+				<code class="css">/*Variables*/				
+@brand-color: #F05B62;
+				
+nav {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li { display: inline-block; }
+
+  a {
+    display: block;
+    color: @brand-color;
+    padding: 6px 12px;
+    text-decoration: none;
+  }
+}
+				</code>
+				</pre>
+			</section>            
+			<section>
+				<h2>Most Common CSS Pre-Processors: Less</h2>
+				<p><a href="http://lesscss.org" target="_blank">Less</a> is similar to Sass, but has slightly different syntax, and is processed using JavaScript (client-side).</p>
+				<pre>
+				<code class="css">				
+@color-base: #2d5e8b;  
+  
+.class1 {  
+    background-color: @color-base;  
+}  
+.class2 {  
+    background-color: #fff;  
+    color: @color-base;  
+}  
+.class3 {  
+    border: 1px solid @color-base;  
+}  
+				</code>
+				</pre>
+			</section>            
+
+			<section>
+				<h2>Resources on CSS Pre-Processors</h2>
+				<ul>
+					<li>Sass
+						<ul>
+							<li><a href="http://sass-lang.com/guide" target="_blank">Sass Basics</a>
+							<li><a href="https://www.codeschool.com/courses/assembling-sass" target="_blank">Assembling Sass @Codeschool</a>
+						</ul>
+					</li>
+					<li>Less
+						<ul>
+							<li><a href="http://lesscss.org/" target="_blank">Less.js</a></li>
+							<li><a href="http://www.hongkiat.com/blog/less-basic/" target="_blank">Less CSS Beginner's Guide</a></li>
+						</ul>
+					</li>	
+					<li><a href="http://www.smashingmagazine.com/2011/09/09/an-introduction-to-less-and-comparison-to-sass/" target="_blank">Compare Less and Sass</a></li>		
+				</ul>
+			</section>         
+			<section>
+				<h2>CSS Build Tools</h2>
+				<p>Many web developers use build tools to help them automate tasks.</p>
+			      <ul>
+			        <li><a href="http://incident57.com/codekit/">CodeKit</a>: a Mac app that can compile Less and Sass, will auto-refresh your browser on save, and has Bower built in, so you can install thousand of components (like Bootstrap, jQuery, or WordPress) with a single click!</li>
+			        <li><a href="http://gruntjs.com/">GruntJS</a>: A command-line JS tool for automating tasks like compiling CSS.</li>
+			      </ul>
+			</section>   
+            <section data-background="#f05b62">
+                <h2 style="color: #fafafa;">Upcoming Events</h2>
+            </section>
+            <section>
+                <h4>Denver Study Group: How to Build a Website - HTML & CSS for Beginners</h4>
+                <p>Turing School of Software & Design</p>
+                <p>Wednesday, October 1, 2014 - 5:30 PM to 6:45 PM</p><br>
+                <h4>BOULDER: CSS3 Properties &amp; Selectors</h4>
+                <p><strong>Galvanize Boulder</strong></p>
+                <p>October 9th 6pm - 8pm</p><br>
+                <h4>BOULDER: Intro to Command Line</h4>
+                <p><strong>Galvanize Boulder</strong></p>
+                <p>October 15th 6pm - 8pm</p>
+            </section>
+            
+            
+            
+            
+            
+        </div>
+        <footer>
+            <div class="copyright">
+                Advanced CSS Techniques &hearts; Girl Develop It Boulder --
+                <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_US">
+                    <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/3.0/80x15.png" />
+                </a>
+	</div>
+	</footer>
+</div>
+<script src="reveal/lib/js/head.min.js"></script>
+<script src="reveal/js/reveal.min.js"></script>
+<script>
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
+        // Optional libraries used to extend on reveal.js
+        dependencies: [{
+            src: 'reveal/lib/js/classList.js',
+            condition: function() {
+                return !document.body.classList;
+            }
+        }, {
+            src: 'reveal/plugin/markdown/showdown.js',
+            condition: function() {
+                return !!document.querySelector('[data-markdown]');
+            }
+        }, {
+            src: 'reveal/plugin/markdown/markdown.js',
+            condition: function() {
+                return !!document.querySelector('[data-markdown]');
+            }
+        }, {
+            src: 'reveal/plugin/highlight/highlight.js',
+            async: true,
+            callback: function() {
+                hljs.initHighlightingOnLoad();
+            }
+        }, {
+            src: 'reveal/plugin/zoom-js/zoom.js',
+            async: true,
+            condition: function() {
+                return !!document.body.classList;
+            }
+        }, {
+            src: 'reveal/plugin/notes/notes.js',
+            async: true,
+            condition: function() {
+                return !!document.body.classList;
+            }
+        }]
+    });
+    </script>
+</body>
+</html>

@@ -8,8 +8,8 @@
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 <link rel="stylesheet" href="reveal/css/reveal.css">
-<link rel="stylesheet" href="reveal/css/theme/simple.css" id="theme">
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="reveal/css/theme/simple.css">
+
 
 <!-- For syntax highlighting -->
 <!-- light editor-->
@@ -29,6 +29,9 @@
 <!--[if lt IE 9]>
     <script src="lib/js/html5shiv.js"></script>
     <![endif]-->
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/icomoon.css">
 </head>
 <body>
 <div class="reveal">
@@ -525,14 +528,41 @@ li {
 				With an icon font, you include classes to add certain icons to your page.
 				<pre>
 				<code class="xml">
-<h4>
-	Happy Birthday! <i class="fa fa-camera-retro"></i>
-</h4>
+Cheers! <span class="icon-glass"></span> <span class="icon-beer"></span>
 				</code>
 				</pre>
 				<h4>
-	Happy Birthday! <i class="fa fa-camera-retro"></i>
+	Cheers! <span class="icon-glass"></span> <span class="icon-beer"></span>
+
 </h4>
+            </section>
+            <section>
+              <h2>All the icons!</h2>
+              <h3 style="background: -webkit-gradient(linear, left top, right top, color-stop(0%,#cb60b3), color-stop(51%,#4db8f2), color-stop(100%,#9bce42));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;"><span class="icon-glass"></span> 
+              <span class="icon-beer"></span> 
+              <span class="icon-tint"></span> 
+              <span class="icon-camera"></span> 
+              <span class="icon-gift"></span> 
+              <span class="icon-leaf"></span> 
+              <span class="icon-eye"></span> 
+              <span class="icon-dashboard"></span> 
+              <span class="icon-legal"></span> 
+              <span class="icon-umbrella"></span> 
+              <span class="icon-flash"></span> 
+              <span class="icon-github-alt"></span> 
+              <span class="icon-gamepad"></span> 
+              <span class="icon-anchor"></span> 
+              <span class="icon-thumbs-up"></span> 
+              <span class="icon-sun-o"></span> 
+              <span class="icon-moon-o"></span> 
+              <span class="icon-pagelines"></span> 
+              <span class="icon-automobile"></span> 
+              <span class="icon-send"></span> 
+              <span class="icon-bomb"></span> 
+              <span class="icon-camera-retro"></span> 
+              </h3>
             </section>
 			<section data-background="#f05b62">
                 <h2 style="color: #fafafa;">Productivity</h2>
@@ -555,7 +585,7 @@ li {
 				<p><a href="http://sass-lang.com/" target="_blank">Sass</a> stands for "Syntactically Awesome Style Sheets." It runs on Ruby, so it's processed server-side.</p>
 				<pre>
 				<code class="css">/*Variables*/				
-@brand-color: #F05B62;
+$brand-color: #F05B62;
 				
 nav {
   ul {
